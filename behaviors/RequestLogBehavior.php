@@ -9,14 +9,22 @@ use Zelenin\yii\modules\RequestLog\models\RequestLog;
 
 class RequestLogBehavior extends Behavior
 {
+    /** @var array */
+    public $excludeRules = [];
+
     /**
      * @inheritdoc
      */
     public function events()
     {
-        return [
-            Application::EVENT_AFTER_REQUEST => 'afterRequest'
-        ];
+        $exclude = false;
+        foreach ($this->excludeRules as $excludeRule) {
+            if (call_user_func($excludeRule)) {
+                $exclude = true;
+                break;
+            }
+        }
+        return $exclude ? [] : [Application::EVENT_AFTER_REQUEST => 'afterRequest'];
     }
 
     /**

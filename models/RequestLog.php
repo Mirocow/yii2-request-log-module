@@ -9,6 +9,7 @@ use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
+use yii\helpers\ArrayHelper;
 use Zelenin\yii\modules\RequestLog\Module;
 
 class RequestLog extends ActiveRecord
@@ -38,6 +39,7 @@ class RequestLog extends ActiveRecord
             'id' => Module::t('ID'),
             'app_id' => Module::t('App ID'),
             'route' => Module::t('Route'),
+            'params' => Module::t('Params'),
             'user_id' => Module::t('User ID'),
             'ip' => Module::t('IP'),
             'datetime' => Module::t('Datetime'),
@@ -50,7 +52,12 @@ class RequestLog extends ActiveRecord
      */
     public function behaviors()
     {
-        return [
+        list ($route, $params) = Yii::$app->getRequest()->resolve();
+
+        $isWebApp = Yii::$app instanceof \yii\web\Application;
+
+        $webAppBehaviors = [];
+        $commonBehaviors = [
             [
                 'class' => AttributeBehavior::className(),
                 'attributes' => [
@@ -65,23 +72,17 @@ class RequestLog extends ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['route']
                 ],
-                'value' => function ($event) {
-                    return Yii::$app->requestedRoute;
+                'value' => function ($event) use ($route) {
+                    return $route;
                 }
-            ],
-            [
-                'class' => BlameableBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['user_id']
-                ]
             ],
             [
                 'class' => AttributeBehavior::className(),
                 'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['ip']
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['params']
                 ],
-                'value' => function ($event) {
-                    return Yii::$app->getRequest()->getUserIP();
+                'value' => function ($event) use ($params) {
+                    return var_export($params, true);
                 }
             ],
             [
@@ -90,17 +91,38 @@ class RequestLog extends ActiveRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => ['datetime']
                 ],
                 'value' => new Expression('now()')
-            ],
-            [
-                'class' => AttributeBehavior::className(),
-                'attributes' => [
-                    ActiveRecord::EVENT_BEFORE_INSERT => ['user_agent']
-                ],
-                'value' => function ($event) {
-                    return Yii::$app->getRequest()->getUserAgent();
-                }
             ]
         ];
+
+        if ($isWebApp) {
+            $webAppBehaviors = [
+                [
+                    'class' => BlameableBehavior::className(),
+                    'attributes' => [
+                        ActiveRecord::EVENT_BEFORE_INSERT => ['user_id']
+                    ]
+                ],
+                [
+                    'class' => AttributeBehavior::className(),
+                    'attributes' => [
+                        ActiveRecord::EVENT_BEFORE_INSERT => ['ip']
+                    ],
+                    'value' => function ($event) {
+                        return Yii::$app->getRequest()->getUserIP();
+                    }
+                ],
+                [
+                    'class' => AttributeBehavior::className(),
+                    'attributes' => [
+                        ActiveRecord::EVENT_BEFORE_INSERT => ['user_agent']
+                    ],
+                    'value' => function ($event) {
+                        return Yii::$app->getRequest()->getUserAgent();
+                    }
+                ]
+            ];
+        }
+        return ArrayHelper::merge($commonBehaviors, $webAppBehaviors);
     }
 
     /**

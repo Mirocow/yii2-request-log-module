@@ -12,10 +12,11 @@ class m141010_072330_createRequestLogTable extends Migration
             'id' => Schema::TYPE_PK,
             'app_id' => Schema::TYPE_STRING . ' not null',
             'route' => Schema::TYPE_STRING . ' not null',
+            'params' => Schema::TYPE_STRING . ' not null',
             'user_id' => Schema::TYPE_INTEGER,
-            'ip' => Schema::TYPE_STRING . ' not null',
+            'ip' => Schema::TYPE_STRING,
             'datetime' => Schema::TYPE_DATETIME . ' not null',
-            'user_agent' => Schema::TYPE_STRING . ' not null'
+            'user_agent' => Schema::TYPE_STRING
         ]);
     }
 

@@ -1,0 +1,37 @@
+{
+    "name": "zelenin/yii2-request-log-module",
+    "description": "Yii2 request log module",
+    "version": "0.0.1",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "request",
+        "log"
+    ],
+    "homepage": "https://github.com/zelenin/yii2-request-log-module",
+    "time": "2015-03-15",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aleksandr Zelenin",
+            "email": "aleksandr@zelenin.me",
+            "homepage": "http://zelenin.me",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/zelenin/yii2-request-log-module/issues",
+        "source": "https://github.com/zelenin/yii2-request-log-module"
+    },
+    "require": {
+        "yiisoft/yii2": "~2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Zelenin\\yii\\modules\\RequestLog\\": ""
+        }
+    },
+    "extra": {
+        "bootstrap": "Zelenin\\yii\\modules\\RequestLog\\Bootstrap"
+    }
+}

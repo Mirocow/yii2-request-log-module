@@ -1,4 +1,4 @@
-# Yii2 RBAC module
+# Yii2 request log module
 
 [Yii2](http://www.yiiframework.com) request log module.
 

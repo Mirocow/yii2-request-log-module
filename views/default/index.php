@@ -45,6 +45,7 @@ echo Breadcrumbs::widget(['links' => [
             ],
             'app_id',
             'route',
+            'params',
             [
                 'attribute' => 'user_id',
                 'value' => function ($model, $index, $dataColumn) {

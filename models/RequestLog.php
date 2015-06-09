@@ -82,6 +82,9 @@ class RequestLog extends ActiveRecord
                     ActiveRecord::EVENT_BEFORE_INSERT => ['params']
                 ],
                 'value' => function ($event) use ($params) {
+                    array_walk_recursive($params, function (&$value) {
+                        $value = utf8_encode($value);
+                    });
                     return var_export($params, true);
                 }
             ],

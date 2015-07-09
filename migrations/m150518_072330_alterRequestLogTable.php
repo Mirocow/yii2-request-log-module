@@ -8,7 +8,7 @@ class m150518_072330_alterRequestLogTable extends Migration
 {
     public function safeUp()
     {
-        $this->alterColumn(RequestLog::tableName(), 'params', Schema::TYPE_TEXT . ' not null');
+        $this->alterColumn(RequestLog::tableName(), 'params', Schema::TYPE_TEXT);
     }
 
     public function safeDown()

@@ -17,7 +17,7 @@ php composer.phar require mirocow/yii2-request-log-module "dev-master"
 or add
 
 ```
-"zelenin/yii2-request-log-module": "dev-master"
+"mirocow/yii2-request-log-module": "dev-master"
 ```
 
 to the require section of your ```composer.json```

@@ -81,10 +81,15 @@ class RequestLog extends ActiveRecord
                 'attributes' => [
                     ActiveRecord::EVENT_BEFORE_INSERT => ['params']
                 ],
-                'value' => function ($event) use ($params) {
-                    array_walk_recursive($params, function (&$value) {
-                        $value = json_encode($value);
-                    });
+                'value' => function ($event) use ($params, $isWebApp) {
+                    if ($isWebApp) {
+                      $params['_GET'] = json_encode(Yii::$app->request->get(), JSON_PRETTY_PRINT);
+                      $params['_POST'] = json_encode(Yii::$app->request->post(), JSON_PRETTY_PRINT);
+                    } else {
+                      array_walk_recursive($params, function (&$value) {
+                          $value = json_encode($value, JSON_PRETTY_PRINT);
+                      });                      
+                    }
                     return var_export($params, true);
                 }
             ],

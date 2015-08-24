@@ -83,7 +83,7 @@ class RequestLog extends ActiveRecord
                 ],
                 'value' => function ($event) use ($params) {
                     array_walk_recursive($params, function (&$value) {
-                        $value = utf8_encode($value);
+                        $value = json_encode($value);
                     });
                     return var_export($params, true);
                 }

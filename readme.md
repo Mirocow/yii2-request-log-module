@@ -11,7 +11,7 @@ The preferred way to install this extension is through [Composer](http://getcomp
 Either run
 
 ```
-php composer.phar require zelenin/yii2-request-log-module "dev-master"
+php composer.phar require mirocow/yii2-request-log-module "dev-master"
 ```
 
 or add
@@ -29,7 +29,7 @@ Configure Request log module in config:
 ```php
 'modules' => [
     'request-log' => [
-        'class' => Zelenin\yii\modules\RequestLog\Module::className(),
+        'class' => mirocow\requestlog\RequestLog\Module::className(),
         // username attribute in your identity class (User)
         'usernameAttribute' => 'name'
     ]
@@ -39,7 +39,7 @@ Configure Request log module in config:
 Run:
 
 ```
-php yii migrate --migrationPath=@Zelenin/yii/modules/RequestLog/migrations
+php yii migrate --migrationPath=@mirocow/requestlog/RequestLog/migrations
 ```
 
 ### Exclude rules
@@ -47,7 +47,7 @@ php yii migrate --migrationPath=@Zelenin/yii/modules/RequestLog/migrations
 Write in bootstrap.php for excluding of some logs:
 
 ```php
-Yii::$container->set(\Zelenin\yii\modules\RequestLog\behaviors\RequestLogBehavior::className(), [
+Yii::$container->set(\mirocow\requestlog\RequestLog\behaviors\RequestLogBehavior::className(), [
     'excludeRules' => [
         function () {
             list ($route, $params) = Yii::$app->getRequest()->resolve();

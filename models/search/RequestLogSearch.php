@@ -1,10 +1,10 @@
 <?php
 
-namespace Zelenin\yii\modules\RequestLog\models\search;
+namespace mirocow\requestlog\RequestLog\models\search;
 
 use Yii;
 use yii\data\ActiveDataProvider;
-use Zelenin\yii\modules\RequestLog\models\RequestLog;
+use mirocow\requestlog\RequestLog\models\RequestLog;
 
 class RequestLogSearch extends RequestLog
 {

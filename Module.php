@@ -1,6 +1,6 @@
 <?php
 
-namespace Zelenin\yii\modules\RequestLog;
+namespace mirocow\requestlog\RequestLog;
 
 use Yii;
 

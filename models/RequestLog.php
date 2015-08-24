@@ -1,6 +1,6 @@
 <?php
 
-namespace Zelenin\yii\modules\RequestLog\models;
+namespace mirocow\requestlog\RequestLog\models;
 
 use Yii;
 use yii\behaviors\AttributeBehavior;
@@ -10,7 +10,7 @@ use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\db\Expression;
 use yii\helpers\ArrayHelper;
-use Zelenin\yii\modules\RequestLog\Module;
+use mirocow\requestlog\RequestLog\Module;
 
 class RequestLog extends ActiveRecord
 {

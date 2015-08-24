@@ -1,10 +1,10 @@
 <?php
 
-namespace Zelenin\yii\modules\RequestLog;
+namespace mirocow\requestlog\RequestLog;
 
 use Yii;
 use yii\base\BootstrapInterface;
-use Zelenin\yii\modules\RequestLog\behaviors\RequestLogBehavior;
+use mirocow\requestlog\RequestLog\behaviors\RequestLogBehavior;
 
 class Bootstrap implements BootstrapInterface
 {

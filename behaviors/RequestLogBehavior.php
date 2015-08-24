@@ -1,11 +1,11 @@
 <?php
 
-namespace Zelenin\yii\modules\RequestLog\behaviors;
+namespace mirocow\requestlog\RequestLog\behaviors;
 
 use Yii;
 use yii\base\Application;
 use yii\base\Behavior;
-use Zelenin\yii\modules\RequestLog\models\RequestLog;
+use mirocow\requestlog\RequestLog\models\RequestLog;
 
 class RequestLogBehavior extends Behavior
 {

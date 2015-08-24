@@ -14,9 +14,9 @@ use yii\web\IdentityInterface;
 use yii\web\View;
 use yii\widgets\Breadcrumbs;
 use yii\widgets\Pjax;
-use Zelenin\yii\modules\RequestLog\models\RequestLog;
-use Zelenin\yii\modules\RequestLog\models\search\RequestLogSearch;
-use Zelenin\yii\modules\RequestLog\Module;
+use mirocow\requestlog\RequestLog\models\RequestLog;
+use mirocow\requestlog\RequestLog\models\search\RequestLogSearch;
+use mirocow\requestlog\RequestLog\Module;
 
 /** @var IdentityInterface|ActiveRecord $identity */
 $identity = Yii::$app->getUser()->identityClass;

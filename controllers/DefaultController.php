@@ -1,10 +1,10 @@
 <?php
 
-namespace Zelenin\yii\modules\RequestLog\controllers;
+namespace mirocow\requestlog\RequestLog\controllers;
 
 use Yii;
 use yii\web\Controller;
-use Zelenin\yii\modules\RequestLog\models\search\RequestLogSearch;
+use mirocow\requestlog\RequestLog\models\search\RequestLogSearch;
 
 class DefaultController extends Controller
 {

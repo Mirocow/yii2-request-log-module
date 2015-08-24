@@ -2,7 +2,7 @@
 
 use yii\db\Migration;
 use yii\db\Schema;
-use Zelenin\yii\modules\RequestLog\models\RequestLog;
+use mirocow\requestlog\RequestLog\models\RequestLog;
 
 class m150518_072330_alterRequestLogTable extends Migration
 {

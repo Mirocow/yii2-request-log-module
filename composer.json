@@ -1,5 +1,5 @@
 {
-    "name": "zelenin/yii2-request-log-module",
+    "name": "mirocow/yii2-request-log-module",
     "description": "Yii2 request log module",
     "type": "yii2-extension",
     "keywords": [
@@ -7,7 +7,7 @@
         "request",
         "log"
     ],
-    "homepage": "https://github.com/zelenin/yii2-request-log-module",
+    "homepage": "https://github.com/Mirocow/yii2-request-log-module",
     "license": "MIT",
     "authors": [
         {
@@ -15,21 +15,27 @@
             "email": "aleksandr@zelenin.me",
             "homepage": "http://zelenin.me",
             "role": "Developer"
-        }
+        },
+        {
+            "name": "Mirocow",
+            "email": "mr.mirocow@gmail.com",
+            "homepage": "http://mirocow.com",
+            "role": "Developer"
+        }        
     ],
     "support": {
-        "issues": "https://github.com/zelenin/yii2-request-log-module/issues",
-        "source": "https://github.com/zelenin/yii2-request-log-module"
+        "issues": "https://github.com/Mirocow/yii2-request-log-module/issues",
+        "source": "https://github.com/Mirocow/yii2-request-log-module"
     },
     "require": {
         "yiisoft/yii2": "~2"
     },
     "autoload": {
         "psr-4": {
-            "Zelenin\\yii\\modules\\RequestLog\\": ""
+            "mirocow\\requestlog\\RequestLog\\": ""
         }
     },
     "extra": {
-        "bootstrap": "Zelenin\\yii\\modules\\RequestLog\\Bootstrap"
+        "bootstrap": "mirocow\\requestlog\\RequestLog\\Bootstrap"
     }
 }

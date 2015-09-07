@@ -17,6 +17,6 @@ class Module extends \yii\base\Module
      */
     public static function t($message, $params = [], $language = null)
     {
-        return Yii::t('zelenin/modules/request-log', $message, $params, $language);
+        return Yii::t('mirocow/modules/request-log', $message, $params, $language);
     }
 }

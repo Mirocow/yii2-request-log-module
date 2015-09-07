@@ -13,6 +13,8 @@ class Bootstrap implements BootstrapInterface
      */
     public function bootstrap($app)
     {
+      if(isset($app->modules['request-log'])){
         $app->attachBehavior('request-log', RequestLogBehavior::className());
+      }
     }
 }
